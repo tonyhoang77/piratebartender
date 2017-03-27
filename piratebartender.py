@@ -17,26 +17,29 @@ ingredients = {
 }
 
 def ask():
+    choices = {
+        
+    }
     for x in questions:
         print(questions[x])
-        response[x] = input("y/n? ")
-        while (response[x] != 'y') and (response[x] != 'n'):
-            response[x] = input("type only y or n. I ask again: {} ".format(questions[x]))
-    
-    print(response)
-    
-    for x in response:
-        if response[x] == 'y':
-            print (random.choice(ingredients[x]))
+        choices[x] = input("y/n? ")
+        while (choices[x] != 'y') and (choices[x] != 'n'):
+            choices[x] = input("type only y or n. I ask again: {} ".format(questions[x]))
+    print(choices)
+    make_drink(choices)
             
-response = {
-    
-}    
+def make_drink(choices):
+    drink = []
+    for x in choices:
+        if choices[x] == 'y':
+            drink.append(random.choice(ingredients[x]))
+    print(drink)
+
 if __name__ == '__main__':
     ask()
-another = input("Would you like another drink? y/n ")
-while (another != 'y') and (another != 'n'):
-    another = input('Type only y or n. Another drink? ')
-while another == 'y':
-    ask()
     another = input("Would you like another drink? y/n ")
+    while (another != 'y') and (another != 'n'):
+        another = input('Type only y or n. Another drink? ')
+    while another == 'y':
+        ask()
+        another = input("Would you like another drink? y/n ")
