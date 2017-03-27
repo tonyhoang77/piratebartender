@@ -15,7 +15,15 @@ ingredients = {
     "sweet": ["sugar cube", "spoonful of honey", "spash of cola"],
     "fruity": ["slice of orange", "dash of cassis", "cherry on top"],
 }
-
+adjective = ['Hairy', 'Stupid', 'Blonde', 'Smelly', 'Loose', 'Putrid', 'Disgusting', 'Violent', 'Bloody', 'Carribbean',
+'Lazy', 'Slow', 'Hot', 'Slimy', 'Old', 'Moist', 'Shiny', 'Frothy', 'Holy', 'Yellow', 'Rancid', 'Spoiled', 'Weird', 'Cheesy',
+'Funky', 'Bad', 'Wet', 'Crappy', 'Mad', 'Septic', 'Dusty', 'Dirty']
+noun = ['Gravy', 'Navel', 'Dog', 'Cat', 'Hag', 'Poop', 'Discharge', 'Gunk', 'Rust', 'Cheese', 'Scum', 'Rat', 'Johnson',
+'Sewage', 'Sea Water', 'Dust', 'Toenail', 'Fungus', 'Paint', 'Santorum', 'Imitation Crab', 'Callus', 'Wart', 'Plague',
+'Headcheese', 'Pus', 'Rubbing Alcohol', 'Glue', 'Galbladder', 'Nipple', 'Battery Acid', 'Chicken']
+name = {
+    
+}
 def ask():
     choices = {
         
@@ -29,11 +37,22 @@ def ask():
     make_drink(choices)
             
 def make_drink(choices):
-    drink = []
+    drink = ()
     for x in choices:
         if choices[x] == 'y':
-            drink.append(random.choice(ingredients[x]))
+            drink = drink + (random.choice(ingredients[x]),)
     print(drink)
+    name_drink(drink)
+    
+def name_drink(drink):
+    namequeue = random.choice(adjective) + " " + random.choice(noun)
+    if drink in name:
+        print(name[drink])
+    else:
+        while namequeue in name.items():
+            namequeue = random.choice(adjective) + " " + random.choice(noun)
+        name[drink] = namequeue
+        print(name[drink])
 
 if __name__ == '__main__':
     ask()
